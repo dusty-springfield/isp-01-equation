@@ -23,7 +23,7 @@ char const LEADING_COEFFICIENT_IS_ZERO = -2;
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveUpToQuadraticEquation(double a, double b, double c, double *x1, double *x2, double epsilon);
+char solveUpToQuadraticEquation(double a, double b, double c, double *roots, double epsilon);
 
 /**
  * Решение квадратного уравнения вида ax<sup>2</sup> + bx + c = 0, a&#8800;0
@@ -36,7 +36,7 @@ char solveUpToQuadraticEquation(double a, double b, double c, double *x1, double
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveQuadraticEquation(double a, double b, double c, double *x1, double *x2, double epsilon);
+char solveQuadraticEquation(double a, double b, double c, double *roots, double epsilon);
 
 /**
  * Решение линейного уравнения вида ax + b = 0, a&#8800;0
@@ -47,7 +47,7 @@ char solveQuadraticEquation(double a, double b, double c, double *x1, double *x2
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveLinearEquation(double a, double b, double *x, double epsilon);
+char solveLinearEquation(double a, double b, double *roots, double epsilon);
 
 /**
  * Вычисление дискриминанта для уравнения  ax<sup>2</sup> + bx + c = 0

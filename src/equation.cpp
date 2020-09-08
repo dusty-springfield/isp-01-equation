@@ -7,18 +7,20 @@
 char solveUpToQuadraticEquation(double a,
                                 double b,
                                 double c,
-                                double *x1,
-                                double *x2,
+                                double *roots,
                                 double epsilon = 2 * DBL_EPSILON) {
 
+  assert(roots != nullptr);
+  assert(std::isfinite(a));
+  assert(std::isfinite(b));
+  assert(std::isfinite(c));
+
   if (!isZero(a, epsilon)) {
-    return solveQuadraticEquation(a, b, c, x1, x2, epsilon);
+    return solveQuadraticEquation(a, b, c, roots, epsilon);
   }
 
   if (!isZero(b, epsilon)) {
-    char nRoots = solveLinearEquation(b, c, x1, epsilon);
-    *x2 = *x1;
-    return nRoots;
+    return solveLinearEquation(b, c, roots, epsilon);
   }
 
   if (!isZero(c, epsilon)) {
@@ -28,7 +30,7 @@ char solveUpToQuadraticEquation(double a,
   return INF_ROOTS;
 }
 
-char solveQuadraticEquation(double a, double b, double c, double *x1, double *x2, double epsilon = 2 * DBL_EPSILON) {
+char solveQuadraticEquation(double a, double b, double c, double *roots, double epsilon = 2 * DBL_EPSILON) {
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
   }
@@ -36,8 +38,7 @@ char solveQuadraticEquation(double a, double b, double c, double *x1, double *x2
   double discriminant = calculateDiscriminant(a, b, c);
 
   if (isZero(discriminant, epsilon)) {
-    *x1 = calculateParabolaXVertex(a, b);
-    *x2 = *x1;
+    roots[0] = calculateParabolaXVertex(a, b);
     return 1;
   }
 
@@ -46,19 +47,17 @@ char solveQuadraticEquation(double a, double b, double c, double *x1, double *x2
   }
 
   double sqrtDiscriminant = sqrt(discriminant);
-  *x1 = (-b - sqrtDiscriminant) / (2 * a);
-  *x2 = (-b + sqrtDiscriminant) / (2 * a);
+  roots[0] = (-b - sqrtDiscriminant) / (2 * a);
+  roots[1] = (-b + sqrtDiscriminant) / (2 * a);
   return 2;
 }
 
-char solveLinearEquation(double a, double b, double *x, double epsilon = 2 * DBL_EPSILON) {
+char solveLinearEquation(double a, double b, double *roots, double epsilon = 2 * DBL_EPSILON) {
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
   }
 
-  double root = -b / a;
-  *x = root;
-
+  roots[0] = -b / a;
   return 1;
 }
 
