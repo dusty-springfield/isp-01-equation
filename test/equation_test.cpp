@@ -16,6 +16,7 @@ TEST(isZero, test1) {
 }
 
 TEST(calculateParabolaXVertex, test1) {
+  double v;
   double x = calculateParabolaXVertex(0.5, 1); // x = -1;
   ASSERT_TRUE(isZero(x + 1));
 
