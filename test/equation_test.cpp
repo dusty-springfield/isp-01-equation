@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <exception>
 
-#include "../src/equation.cpp"
+#include "../src/equation.h"
 
 TEST(isZero, test1) {
   ASSERT_TRUE(isZero(0.0));

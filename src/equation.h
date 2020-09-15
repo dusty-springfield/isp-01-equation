@@ -1,6 +1,8 @@
 #ifndef INC_01_EQUATION_LIBRARY_H
 #define INC_01_EQUATION_LIBRARY_H
 
+#include <float.h>
+
 /**
  * Бесконечное количество решений
  */
@@ -23,7 +25,8 @@ char const LEADING_COEFFICIENT_IS_ZERO = -2;
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveUpToQuadraticEquation(double a, double b, double c, double *roots, double epsilon);
+char solveUpToQuadraticEquation(double a, double b, double c, double *roots,
+                                double epsilon = 2 * DBL_EPSILON);
 
 /**
  * Решение квадратного уравнения вида ax<sup>2</sup> + bx + c = 0, a&#8800;0
@@ -36,7 +39,8 @@ char solveUpToQuadraticEquation(double a, double b, double c, double *roots, dou
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveQuadraticEquation(double a, double b, double c, double *roots, double epsilon);
+char solveQuadraticEquation(double a, double b, double c, double *roots,
+                            double epsilon = 2 * DBL_EPSILON);
 
 /**
  * Решение линейного уравнения вида ax + b = 0, a&#8800;0
@@ -47,7 +51,8 @@ char solveQuadraticEquation(double a, double b, double c, double *roots, double 
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
-char solveLinearEquation(double a, double b, double *roots, double epsilon);
+char solveLinearEquation(double a, double b, double *roots,
+                         double epsilon = 2 * DBL_EPSILON);
 
 /**
  * Вычисление дискриминанта для уравнения  ax<sup>2</sup> + bx + c = 0
@@ -73,6 +78,6 @@ double calculateParabolaXVertex(double a, double b);
  * @param[in] value Сравниваемое значение
  * @param[in] epsilon точность вычислений
  */
-bool isZero(double value, double epsilon);
+bool isZero(double value, double epsilon = 2 * DBL_EPSILON);
 
-#endif //INC_01_EQUATION_LIBRARY_H
+#endif // INC_01_EQUATION_LIBRARY_H

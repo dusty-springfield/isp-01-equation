@@ -1,14 +1,10 @@
-#include <cmath>
 #include <assert.h>
-#include <float.h>
+#include <cmath>
 
 #include "equation.h"
 
-char solveUpToQuadraticEquation(double a,
-                                double b,
-                                double c,
-                                double *roots,
-                                double epsilon = 2 * DBL_EPSILON) {
+char solveUpToQuadraticEquation(double a, double b, double c, double *roots,
+                                double epsilon) {
 
   assert(roots != nullptr);
   assert(std::isfinite(a));
@@ -30,7 +26,13 @@ char solveUpToQuadraticEquation(double a,
   return INF_ROOTS;
 }
 
-char solveQuadraticEquation(double a, double b, double c, double *roots, double epsilon = 2 * DBL_EPSILON) {
+char solveQuadraticEquation(double a, double b, double c, double *roots,
+                            double epsilon) {
+  assert(roots != nullptr);
+  assert(std::isfinite(a));
+  assert(std::isfinite(b));
+  assert(std::isfinite(c));
+
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
   }
@@ -52,7 +54,11 @@ char solveQuadraticEquation(double a, double b, double c, double *roots, double 
   return 2;
 }
 
-char solveLinearEquation(double a, double b, double *roots, double epsilon = 2 * DBL_EPSILON) {
+char solveLinearEquation(double a, double b, double *roots, double epsilon) {
+  assert(roots != nullptr);
+  assert(std::isfinite(a));
+  assert(std::isfinite(b));
+
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
   }
@@ -62,15 +68,20 @@ char solveLinearEquation(double a, double b, double *roots, double epsilon = 2 *
 }
 
 double calculateDiscriminant(double a, double b, double c) {
+  assert(std::isfinite(a));
+  assert(std::isfinite(b));
+  assert(std::isfinite(c));
   return pow(b, 2) - (4 * a * c);
 }
 
 double calculateParabolaXVertex(double a, double b) {
-  assert(a != 0);
+  assert(std::isfinite(a));
+  assert(std ::isfinite(b));
 
   return -b / (2 * a);
 }
 
-bool isZero(double value, double epsilon = 2 * DBL_EPSILON) {
+bool isZero(double value, double epsilon) {
+  assert(std::isfinite(value));
   return fabs(value) < epsilon;
 }
