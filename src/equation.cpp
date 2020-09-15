@@ -5,11 +5,11 @@
 
 char solveUpToQuadraticEquation(double a, double b, double c, double *roots,
                                 double epsilon) {
-
   assert(roots != nullptr);
   assert(std::isfinite(a));
   assert(std::isfinite(b));
   assert(std::isfinite(c));
+  assert(std::isfinite(epsilon));
 
   if (!isZero(a, epsilon)) {
     return solveQuadraticEquation(a, b, c, roots, epsilon);
@@ -32,6 +32,7 @@ char solveQuadraticEquation(double a, double b, double c, double *roots,
   assert(std::isfinite(a));
   assert(std::isfinite(b));
   assert(std::isfinite(c));
+  assert(std::isfinite(epsilon));
 
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
@@ -58,6 +59,7 @@ char solveLinearEquation(double a, double b, double *roots, double epsilon) {
   assert(roots != nullptr);
   assert(std::isfinite(a));
   assert(std::isfinite(b));
+  assert(std::isfinite(epsilon));
 
   if (isZero(a, epsilon)) {
     return LEADING_COEFFICIENT_IS_ZERO;
@@ -71,6 +73,7 @@ double calculateDiscriminant(double a, double b, double c) {
   assert(std::isfinite(a));
   assert(std::isfinite(b));
   assert(std::isfinite(c));
+
   return pow(b, 2) - (4 * a * c);
 }
 
@@ -83,5 +86,7 @@ double calculateParabolaXVertex(double a, double b) {
 
 bool isZero(double value, double epsilon) {
   assert(std::isfinite(value));
+  assert(std::isfinite(epsilon));
+
   return fabs(value) < epsilon;
 }
