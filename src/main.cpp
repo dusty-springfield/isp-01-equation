@@ -1,17 +1,23 @@
 #include <cstdio>
-#include <cstdlib>
+#include <math.h>
 
 #include "equation.h"
 #define NUMBER_OF_COEFFICIENTS 3
 
 
-bool readInput(double *a, double *b, double *c) {
+static bool readInput(double *a, double *b, double *c) {
   printf("Enter coefficients (a, b, c) to the equation ax^2 + bx + c = 0:\n");
   return scanf("%lf %lf %lf", a, b, c) == NUMBER_OF_COEFFICIENTS;
 }
 
-void outputRoots(char nRoots, double *roots) {
-  if (nRoots == INF_ROOTS) {
+static void outputRoots(char nRoots, double *roots) {
+  if(nRoots == INVALID_ARGUMENTS){
+    printf("Invalid arguments provided\n");
+
+  }else if(nRoots == FAILURE){
+    printf("Computation failure. Probably caused by double overflow\n");
+
+  }else if (nRoots == INF_ROOTS) {
     printf("Number of roots is infinite\n");
 
   } else {
@@ -27,9 +33,9 @@ void outputRoots(char nRoots, double *roots) {
 }
 
 int main() {
-  double a = 0;
-  double b = 0;
-  double c = 0;
+  double a = NAN;
+  double b = NAN;
+  double c = NAN;
 
   if (!readInput(&a, &b, &c)) {
     fprintf(stderr, "Incorrect input\n");
