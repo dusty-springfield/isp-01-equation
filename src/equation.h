@@ -6,12 +6,26 @@
 /**
  * Бесконечное количество решений
  */
-char const INF_ROOTS = -1;
+#define INF_ROOTS  -1
 
 /**
  * Неверная классификация уравнения в виду равества 0-ю старшего члена
  */
-char const LEADING_COEFFICIENT_IS_ZERO = -2;
+#define LEADING_COEFFICIENT_IS_ZERO -2
+
+/**
+ * Неверные входные данные. Возможные ошибки:
+ * <ul>
+ * <li>Передан указатель на NULL</li>
+ * <li>В качестве коэффициента передан NaN</li>
+ * </ul>
+ */
+#define INVALID_ARGUMENTS -3
+
+/**
+ * Переполнение double при вычислениях
+ */
+#define FAILURE -4
 
 /**
  * Решение уравнений вплоть до второй степени вида ax<sup>2</sup> + bx + c = 0.
@@ -37,10 +51,12 @@ char solveUpToQuadraticEquation(double a, double b, double c, double *roots,
  * @param[out] x1 первый корень уравнения (если есть)
  * @param[out] x2 второй корень уравнения (если есть)
  * @param[in] epsilon точность вычислений
+ * @param[in] checked проводилась ли уже проверка аргументов на валидность
  * @return количество корней уравнения
  */
 char solveQuadraticEquation(double a, double b, double c, double *roots,
-                            double epsilon = 2 * DBL_EPSILON);
+                            double epsilon = 2 * DBL_EPSILON,
+                            bool checked = false);
 
 /**
  * Решение линейного уравнения вида ax + b = 0, a&#8800;0
@@ -49,10 +65,12 @@ char solveQuadraticEquation(double a, double b, double c, double *roots,
  * @param[in] b свободный член
  * @param[out] x корень уравнения (если есть)
  * @param[in] epsilon точность вычислений
+ * @param[in] checked проводилась ли уже проверка аргументов на валидность
  * @return количество корней уравнения
  */
 char solveLinearEquation(double a, double b, double *roots,
-                         double epsilon = 2 * DBL_EPSILON);
+                         double epsilon = 2 * DBL_EPSILON,
+                         bool checked = false);
 
 /**
  * Вычисление дискриминанта для уравнения  ax<sup>2</sup> + bx + c = 0
