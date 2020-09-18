@@ -44,7 +44,7 @@ char solveQuadraticEquation(double a, double b, double c, double *roots,
   assert(std::isfinite(epsilon));
   assert(roots != nullptr);
 
-  if (!checked && isValidCoefficientsAndPointers(a, b, c, roots, epsilon)) {
+  if (!checked && !isValidCoefficientsAndPointers(a, b, c, roots, epsilon)) {
     return INVALID_ARGUMENTS;
   }
 
@@ -86,7 +86,7 @@ char solveLinearEquation(double a, double b, double *roots, double epsilon,
   assert(std::isfinite(epsilon));
   assert(roots != nullptr);
 
-  if (!checked && isValidCoefficientsAndPointers(0, a, b, roots, epsilon)) {
+  if (!checked && !isValidCoefficientsAndPointers(0, a, b, roots, epsilon)) {
     return INVALID_ARGUMENTS;
   }
 
