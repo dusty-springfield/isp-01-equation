@@ -2,7 +2,7 @@
 Program solving quadratic equations<br> ([@dspringfield](t.me/dspringfield))
 
 ## Required
-* C/C++ compiler
+* C++ compiler
 * CMake
 * Doxygen
 
