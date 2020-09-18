@@ -7,7 +7,7 @@ Program solving quadratic equations<br> ([@dspringfield](t.me/dspringfield))
 * Doxygen
 
 ## Build
-All manipulation should be done in the root folder of project. <br>
+All manipulations should be done in the root folder of the project. <br>
 Initially execute `cmake -B ./build`
  
  ### Program
@@ -25,6 +25,6 @@ Initially execute `cmake -B ./build`
   * Run `./build/test/g_test` 
  
  ### Documentations
- To generate html documentation of project:
+ To generate html documentation of the project:
  * Execute `cmake --build ./build -t docs`
  * Open `./build/html/index.html`
