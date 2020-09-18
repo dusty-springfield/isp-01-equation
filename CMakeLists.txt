@@ -1,12 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
-project(equation)
+
+project(isp-01-equation)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_FLAGS "-Wall -Wextra -Wfloat-equal")
 
+add_subdirectory(src)
+add_subdirectory(test)
 add_subdirectory(gtest/googletest-master)
+
+link_directories(src)
+link_directories(test)
 
 include_directories(gtest/googletest-master/googletest/include)
 include_directories(gtest/googletest-master/googlemock/include)
-
-add_executable(equation test/equation_test.cpp test/equation_my_test.cpp src/equation.cpp)
-target_link_libraries(equation gtest gtest_main)
