@@ -1,6 +1,5 @@
 # Equation Solver
-<p>Program solving quadratic equations</p>
-<p>[@dspringfield](t.me/dspringfield)</p>
+Program solving quadratic equations [@dspringfield](t.me/dspringfield)
 
 ## Required
 * C/C++ compiler
