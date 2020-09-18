@@ -1,41 +1,46 @@
+/**
+ * @file equation.h
+* @brief Библиотека для решения уравнений до второй степени включительно
+ */
+
 #ifndef INC_01_EQUATION_LIBRARY_H
 #define INC_01_EQUATION_LIBRARY_H
 
 #include <float.h>
 
 /**
- * Бесконечное количество решений
+ * @brief Бесконечное количество решений
  */
-#define INF_ROOTS  -1
+#define INF_ROOTS -1
 
 /**
- * Неверная классификация уравнения в виду равества 0-ю старшего члена
+ * @brief Неверная классификация уравнения в виду равества 0-ю старшего члена
  */
 #define LEADING_COEFFICIENT_IS_ZERO -2
 
 /**
- * Неверные входные данные. Возможные ошибки:
+ * @brief Неверные входные данные. Возможные ошибки:
+ *
  * <ul>
- * <li>Передан указатель на NULL</li>
- * <li>В качестве коэффициента передан NaN</li>
+ * <li>передан указатель на NULL</li>
+ * <li>в качестве коэффициента передан NaN</li>
  * </ul>
  */
 #define INVALID_ARGUMENTS -3
 
 /**
- * Переполнение double при вычислениях
+ * @brief Переполнение double при вычислениях
  */
 #define FAILURE -4
 
 /**
- * Решение уравнений вплоть до второй степени вида ax<sup>2</sup> + bx + c = 0.
+ * @brief Решение уравнений вплоть до второй степени вида ax<sup>2</sup> + bx + c = 0.
  * Для a, b, c допустимо равенство нулю
  *
  * @param[in] a коэффициент при x<sup>2</sup>
  * @param[in] b коэффициент при x
  * @param[in] c свободный член
- * @param[out] x1 первый корень уравнения (если есть)
- * @param[out] x2 второй корень уравнения (если есть)
+ * @param[out] roots корни уравнения (минимальный размер массива - 2)
  * @param[in] epsilon точность вычислений
  * @return количество корней уравнения
  */
@@ -43,13 +48,12 @@ char solveUpToQuadraticEquation(double a, double b, double c, double *roots,
                                 double epsilon = 2 * DBL_EPSILON);
 
 /**
- * Решение квадратного уравнения вида ax<sup>2</sup> + bx + c = 0, a&#8800;0
+ * @brief Решение квадратного уравнения вида ax<sup>2</sup> + bx + c = 0, a&ne;0
  *
  * @param[in] a коэффициент при x<sup>2</sup>
  * @param[in] b коэффициент при x
  * @param[in] c свободный член
- * @param[out] x1 первый корень уравнения (если есть)
- * @param[out] x2 второй корень уравнения (если есть)
+ * @param[out] roots корни уравнения (минимальный размер массива - 2)
  * @param[in] epsilon точность вычислений
  * @param[in] checked проводилась ли уже проверка аргументов на валидность
  * @return количество корней уравнения
@@ -59,11 +63,11 @@ char solveQuadraticEquation(double a, double b, double c, double *roots,
                             bool checked = false);
 
 /**
- * Решение линейного уравнения вида ax + b = 0, a&#8800;0
+ * @brief Решение линейного уравнения вида ax + b = 0, a&ne;0
  *
  * @param[in] a коэффициент при x
  * @param[in] b свободный член
- * @param[out] x корень уравнения (если есть)
+ * @param[out] roots корни уравнения (минимальный размер массива - 1)
  * @param[in] epsilon точность вычислений
  * @param[in] checked проводилась ли уже проверка аргументов на валидность
  * @return количество корней уравнения
@@ -73,7 +77,7 @@ char solveLinearEquation(double a, double b, double *roots,
                          bool checked = false);
 
 /**
- * Вычисление дискриминанта для уравнения  ax<sup>2</sup> + bx + c = 0
+ * @brief Вычисление дискриминанта для уравнения  ax<sup>2</sup> + bx + c = 0
  *
  * @param[in] a коэффициент при x<sup>2</sup>
  * @param[in] b коэффициент при x
@@ -83,7 +87,7 @@ char solveLinearEquation(double a, double b, double *roots,
 double calculateDiscriminant(double a, double b, double c);
 
 /**
- * Вычиление x вершины параболы ax<sup>2</sup> + bx + c
+ * @brief Вычиление x вершины параболы ax<sup>2</sup> + bx + c
  *
  * @param[in] a коэффициент при x<sup>2</sup>
  * @param[in] b коэффициент при x
@@ -92,7 +96,8 @@ double calculateDiscriminant(double a, double b, double c);
 double calculateParabolaXVertex(double a, double b);
 
 /**
- * Проверка числа на равенство нулю
+ * @brief Проверка числа на равенство нулю
+ *
  * @param[in] value Сравниваемое значение
  * @param[in] epsilon точность вычислений
  */
