@@ -17,7 +17,6 @@ include_directories(gtest/googletest-master/googlemock/include)
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
-    set(DOXYGEN_USE_MATHJAX YES)
     doxygen_add_docs(docs ${PROJECT_SOURCE_DIR}/src)
 else ()
     message("Doxygen need to be installed to generate the documentation")
